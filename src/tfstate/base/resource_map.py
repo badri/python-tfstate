@@ -52,6 +52,7 @@ class ResourceMap(object):
         'data_aws_ami': aws.DataAwsAmiResource,
         'data_aws_caller_identity': aws.DataAwsCallerIdentityResource,
         'data_template_file': template.DataTemplateFileResource,
+        'local_file': other.LocalFileResource,
         'null_resource': other.NullResource,
         'data_null_data_source': other.NullDataSource,
         'data_aws_security_group': aws.DataAwsSecurityGroupResource,
@@ -73,6 +74,6 @@ class ResourceMap(object):
 
         resource_class = ResourceMap.RESOURCE_MAP.get(resource_type, None)
         if resource_class is None:
-            raise NotImplementedError('Resource {} not implemented yet'.format(resource_name))
+            print('Resource {} not implemented yet'.format(resource_name))
 
         return resource_class

@@ -92,6 +92,7 @@ class Resource(object):
         resources = {}
         for name, data in resources_dict.items():
             resource_class = ResourceMap.get(name)
-            resources[name] = resource_class(name, data)
+            if resource_class:
+                resources[name] = resource_class(name, data)
 
         return resources
