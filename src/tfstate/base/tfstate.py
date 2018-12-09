@@ -14,16 +14,15 @@ class Tfstate(object):
 
     Usage::
 
-        Tfstate(file_descriptor)
+        Tfstate(tfstate)
     """
 
-    def __init__(self, file_descriptor):
+    def __init__(self, tfstate: str):
         """
-        :param file file_descriptor: tfstate file descriptor
+        :param str tfstate: tfstate contents
         """
 
-        self.tfstate_file = file_descriptor
-        self.load_tfstate_data_from_file()
+        self.native_data = json.loads(tfstate)
         self.version = self.native_data.get('version', None)
         self.serial = self.native_data.get('serial', None)
         self.terraform_version = self.native_data.get('terraform_version', None)
@@ -34,8 +33,4 @@ class Tfstate(object):
         """
         Read the tfstate file and load its contents, parses then as JSON and put the result into the object
         """
-        self.tfstate_file.seek(0)
-        tfstate_data = self.tfstate_file.read()
-        if isinstance(tfstate_data, bytes):
-            tfstate_data = tfstate_data.decode('utf-8')
-        self.native_data = json.loads(tfstate_data)
+        pass

@@ -75,5 +75,4 @@ class ResourceMap(object):
         resource_class = ResourceMap.RESOURCE_MAP.get(resource_type, None)
         if resource_class is None:
             print('Resource {} not implemented yet'.format(resource_name))
-
         return resource_class
